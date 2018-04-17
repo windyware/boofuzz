@@ -143,6 +143,11 @@ class Request(IFuzzable):
 
         return self._rendered
 
+    def callback(self, data):
+        for item in self.stack:
+            if(item._callback != None):
+                item._callback(data)
+
     def reset(self):
         """
         Reset every block and primitives mutant state under this request.

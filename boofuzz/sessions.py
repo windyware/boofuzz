@@ -395,6 +395,8 @@ class Session(pgraph.Graph):
         Returns:
             None
         """
+
+        # web
         self.server_init()
 
         try:
@@ -737,6 +739,7 @@ class Session(pgraph.Graph):
                     # Assume a crash?
                     self._fuzz_data_logger.log_fail("Nothing received from target.")
                 else:
+
                     self._fuzz_data_logger.log_pass("Some data received from target.")
         except sex.BoofuzzTargetConnectionReset:
             if self._ignore_connection_reset:

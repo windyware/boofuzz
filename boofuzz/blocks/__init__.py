@@ -8,3 +8,8 @@ from .size import Size
 
 REQUESTS = {}
 CURRENT = None
+
+# add a global quene
+# this is a dic that contact the data when fuzz one node,
+# and i will send it to next node
+KEYS = {}

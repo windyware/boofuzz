@@ -34,6 +34,7 @@ class BasePrimitive(IFuzzable):
         self._fuzz_library = []  # library of static fuzz heuristics to cycle through.
         self._rendered = ""  # rendered value of primitive.
         self._value = None  # current value of primitive.
+        self._callback = None # call back when fuzz this node
 
     def mutate(self):
         fuzz_complete = False
@@ -96,3 +97,7 @@ class BasePrimitive(IFuzzable):
         :return: True
         """
         return True
+
+    @property
+    def callback(self):
+        return self._callback

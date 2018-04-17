@@ -647,6 +647,13 @@ def s_qword(value, endian=LITTLE_ENDIAN, output_format="binary", signed=False, f
     qword = primitives.QWord(value, endian, output_format, signed, full_range, fuzzable, name)
     blocks.CURRENT.push(qword)
 
+def s_pre_element(key, callback = None):
+    s = primitives.PreElement(key, callback)
+    blocks.CURRENT.push(s)
+
+def s_callback(callback):
+    s = primitives.CallBack(callback)
+    blocks.CURRENT.push(s)
 
 # ALIASES
 
@@ -779,3 +786,20 @@ def s_hex_dump(data, addr=0):
             dump += "."
 
     return dump + "\n"
+
+def s_add_keys(key, value):
+    """
+    add key:value into the KEYS, if key is exits, then update it,
+    otherwise, add it
+
+    :param key:
+    :param value:
+    :return:
+    """
+    if blocks.KEYS.has_key(key):
+        blocks.KEYS[key] = value
+    else:
+        blocks.KEYS[key] = value
+    pass
+
+
