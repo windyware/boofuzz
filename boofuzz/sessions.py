@@ -733,8 +733,9 @@ class Session(pgraph.Graph):
                 # Receive data
                 # TODO: Remove magic number (10000)
                 self.last_recv = self.targets[0].recv(10000)
-
+                node.callback(self.last_recv)
                 self._fuzz_data_logger.log_check("Verify some data was received from the target.")
+
                 if not self.last_recv:
                     # Assume a crash?
                     self._fuzz_data_logger.log_fail("Nothing received from target.")

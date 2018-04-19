@@ -1,6 +1,6 @@
 import collections
 
-from .. import sex
+from ..import sex
 from .block import Block
 from ..ifuzzable import IFuzzable
 
@@ -145,8 +145,8 @@ class Request(IFuzzable):
 
     def callback(self, data):
         for item in self.stack:
-            if(item._callback != None):
-                item._callback(data)
+            if item.get_callback():
+                item.run_callback(data)
 
     def reset(self):
         """

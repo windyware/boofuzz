@@ -274,3 +274,16 @@ class Block(IFuzzable):
         :return: True
         """
         return True
+
+    def get_callback(self):
+        for item in self.stack:
+            if item._callback != None:
+                return True
+        return False
+
+    def run_callback(self, data):
+        for item in self.stack:
+            if item._callback != None:
+                item._callback(data)
+
+

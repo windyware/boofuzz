@@ -101,3 +101,9 @@ class BasePrimitive(IFuzzable):
     @property
     def callback(self):
         return self._callback
+
+    def get_callback(self):
+        return self._callback
+
+    def run_callback(self, data):
+        self._callback(data)
