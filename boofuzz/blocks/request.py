@@ -6,7 +6,7 @@ from ..ifuzzable import IFuzzable
 
 
 class Request(IFuzzable):
-    def __init__(self, name):
+    def __init__(self, name, callback = None):
         """
         Top level container instantiated by s_initialize(). Can hold any block structure or primitive. This can
         essentially be thought of as a super-block, root-block, daddy-block or whatever other alias you prefer.
@@ -26,6 +26,10 @@ class Request(IFuzzable):
         self._rendered = ""  # rendered block structure.
         self._mutant_index = 0  # current mutation index.
         self.mutant = None  # current primitive being mutated.
+        self._callback = callback # if this request has a callback, it will call it after fuzz this node, it
+                                  # need to be definition as func(data)
+
+
 
     @property
     def name(self):
@@ -144,9 +148,11 @@ class Request(IFuzzable):
         return self._rendered
 
     def callback(self, data):
-        for item in self.stack:
-            if item.get_callback():
-                item.run_callback(data)
+        #for item in self.stack:
+        #    if item.get_callback():
+        #        item.run_callback(data)
+        self._callback(data)
+
 
     def reset(self):
         """
