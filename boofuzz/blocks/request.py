@@ -151,7 +151,8 @@ class Request(IFuzzable):
         #for item in self.stack:
         #    if item.get_callback():
         #        item.run_callback(data)
-        self._callback(data)
+        if self._callback != None:
+            self._callback(data)
 
 
     def reset(self):
