@@ -61,7 +61,7 @@ def s_get(name=None):
     return blocks.REQUESTS[name]
 
 
-def s_initialize(name):
+def s_initialize(name, callback=None):
     """
     Initialize a new block request. All blocks / primitives generated after this call apply to the named request.
     Use s_switch() to jump between factories.
@@ -72,7 +72,7 @@ def s_initialize(name):
     if name in blocks.REQUESTS:
         raise sex.SullyRuntimeError("blocks.REQUESTS ALREADY EXISTS: %s" % name)
 
-    blocks.REQUESTS[name] = Request(name)
+    blocks.REQUESTS[name] = Request(name, callback)
     blocks.CURRENT = blocks.REQUESTS[name]
 
 
