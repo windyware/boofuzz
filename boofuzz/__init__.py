@@ -802,4 +802,11 @@ def s_add_keys(key, value):
         blocks.KEYS[key] = value
     pass
 
+def s_get_keys(key):
+    if blocks.KEYS.has_key(key):
+        return blocks.KEYS[key]
+    else:
+        return ''
+
+
 

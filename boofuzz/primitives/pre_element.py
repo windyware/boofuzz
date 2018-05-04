@@ -1,5 +1,4 @@
 from base_primitive import BasePrimitive
-from ..blocks import *
 from .. import blocks
 
 class PreElement(BasePrimitive):
@@ -38,11 +37,8 @@ class PreElement(BasePrimitive):
 
         if self._callback is None:
             _rendered  = self._key
-            _rendered += ':'
-            _rendered += blocks.KEYS[self._key]
-            _rendered += '\n'
         else:
-            _rendered = self._callback(self._key, blocks.KEYS[self._key])
+            _rendered = self._callback(self._key)
 
         return _rendered
 
