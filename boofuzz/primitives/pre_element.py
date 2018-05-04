@@ -1,5 +1,4 @@
 from base_primitive import BasePrimitive
-from .. import blocks
 
 class PreElement(BasePrimitive):
     """
