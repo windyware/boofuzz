@@ -38,10 +38,10 @@ class PreElement(BasePrimitive):
         if self._callback is None:
             _rendered  = self._key
             _rendered += ':'
-            _rendered += KEYS[self._key]
+            _rendered += blocks.KEYS[self._key]
             _rendered += '\n'
         else:
-            _rendered = self._callback(self._key, KEYS[self._key])
+            _rendered = self._callback(self._key, blocks.KEYS[self._key])
 
         return _rendered
 
