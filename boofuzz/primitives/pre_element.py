@@ -41,7 +41,7 @@ class PreElement(BasePrimitive):
             _rendered += KEYS[self._key]
             _rendered += '\n'
         else:
-            self._callback(self._key, KEYS[self._key])
+            _rendered = self._callback(self._key, KEYS[self._key])
 
         return _rendered
 
